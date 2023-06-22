@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="stylesheet" href="css/style.min.css?_v=20230620160227">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230623000147">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -63,15 +63,15 @@
 					</svg>
 				</button>
 				<div class="overlay header__overlay" id="burger-overlay"></div>
-				<nav data-one-spoller class="header__nav" id="burger-menu">
+				<nav class="header__nav" id="burger-menu">
 					<button data-da=".header__right, 576, 2" class="btn header__nav-btn header__nav-btn--close" id="burger-close">
 						<svg class="header__nav-btn-icon">
 							<use xlink:href="img/icons/icons.svg#svg-close"></use>
 						</svg>
 					</button>
-					<ul class="list header__nav-list">
+					<ul data-spollers="992, max" data-one-spoller class="list header__nav-list">
 						<li class="dropdown _media-spoller">
-							<button class="btn dropdown__btn">
+							<button data-spoller class="btn dropdown__btn">
 								О центре
 								<svg class="dropdown__icon">
 									<use xlink:href="img/icons/icons.svg#svg-arrow"></use>
@@ -106,7 +106,7 @@
 							</div>
 						</li>
 						<li class="dropdown _media-spoller">
-							<button class="btn dropdown__btn">
+							<button data-spoller class="btn dropdown__btn">
 								Услуги и цены
 								<svg class="dropdown__icon">
 									<use xlink:href="img/icons/icons.svg#svg-arrow"></use>
@@ -381,28 +381,33 @@
 					<div class="swiper-wrapper">
 						<div class="swiper-slide results__slide">
 							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
-						</div>
-						<div class="swiper-slide results__slide">
 							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
 						</div>
 						<div class="swiper-slide results__slide">
 							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
-						</div>
-						<div class="swiper-slide results__slide">
 							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
 						</div>
 						<div class="swiper-slide results__slide">
+							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
+							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
+						</div>
+						<div class="swiper-slide results__slide">
+							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
+							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
+						</div>
+						<div class="swiper-slide results__slide">
+							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
 							<img src="img/pictures/results.jpg" alt="Изображение" width="405" height="405" class="results__slide-img" />
 						</div>
 					</div>
 					<button class="btn btn-circle results__slider-btn results__slider-btn--prev">
 						<svg class="results__slider-btn-icon">
-							<use xlink:href='img/icons/icons.svg#svg-arrow-line'></use>
+							<use xlink:href="img/icons/icons.svg#svg-arrow-line"></use>
 						</svg>
 					</button>
 					<button class="btn btn-circle results__slider-btn results__slider-btn--next">
 						<svg class="results__slider-btn-icon">
-							<use xlink:href='img/icons/icons.svg#svg-arrow-line'></use>
+							<use xlink:href="img/icons/icons.svg#svg-arrow-line"></use>
 						</svg>
 					</button>
 				</div>
@@ -641,7 +646,7 @@
 		</div>
 	</footer>
 
-	<script src="js/app.min.js?_v=20230620160227"></script>
+	<script src="js/app.min.js?_v=20230623000147"></script>
 </body>
 
 </html>

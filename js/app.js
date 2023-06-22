@@ -117,21 +117,26 @@
         if (buttonsDropdown.length) {
             buttonsDropdown.forEach((btn => {
                 btn.addEventListener("click", (e => {
-                    e.stopPropagation();
                     const currentDropdown = btn.closest(".dropdown");
                     const dropdownItem = currentDropdown.querySelector(".dropdown__item");
                     dropdownItem.addEventListener("click", (e => e.stopPropagation()));
-                    document.addEventListener("click", closeDrodpown);
-                    if (currentDropdown.classList.contains("open")) closeDrodpown(); else {
+                    document.addEventListener("click", handlerDocument);
+                    if (currentDropdown.classList.contains("open")) closeDrodpown(currentDropdown); else {
                         dropdowns.forEach((d => d.classList.remove("open")));
                         currentDropdown.classList.add("open");
                     }
                 }));
             }));
-            function closeDrodpown() {
-                const currentDropdown = document.querySelector(".dropdown.open");
+            function closeDrodpown(currentDropdown) {
                 currentDropdown.classList.remove("open");
-                return document.removeEventListener("click", closeDrodpown);
+                return document.removeEventListener("click", handlerDocument);
+            }
+            function handlerDocument(e) {
+                if (!e.target.classList.contains("dropdown__btn")) {
+                    const currentDropdown = document.querySelector(".dropdown.open");
+                    currentDropdown.classList.remove("open");
+                    return document.removeEventListener("click", handlerDocument);
+                }
             }
         }
     }
@@ -3512,7 +3517,6 @@
             new core(resultsSlider, {
                 speed: 700,
                 simulateTouch: false,
-                slidesPerView: 2,
                 spaceBetween: 15,
                 initialSlide: 2,
                 navigation: {
@@ -3606,6 +3610,44 @@
             }));
         }));
     }
+    function modal() {
+        const buttonsModal = document.querySelectorAll(".btn-modal");
+        if (buttonsModal.length) {
+            buttonsModal.forEach((btn => {
+                btn.addEventListener("click", (e => {
+                    e.stopPropagation();
+                    const modalId = btn.dataset.modal;
+                    const currentModal = document.querySelector(`.modal[data-modal="${modalId}"]`);
+                    const modalWindow = currentModal.querySelector(".modal__window");
+                    const btnClose = currentModal.querySelector(".modal__close");
+                    modalTop(modalWindow);
+                    btnClose.addEventListener("click", handleClose);
+                    document.addEventListener("click", handleClose);
+                    modalWindow.addEventListener("click", (e => e.stopPropagation()));
+                    currentModal.classList.add("open");
+                    document.body.classList.add("body-hidden");
+                }));
+            }));
+            function modalTop(modalWindow) {
+                const windowHeight = document.documentElement.clientHeight;
+                const modalHeight = modalWindow.clientHeight;
+                const offsetTop = (windowHeight - modalHeight) / 2;
+                const marginTop = offsetTop > 20 ? `${offsetTop}px` : "20px";
+                modalWindow.style.marginTop = marginTop;
+            }
+            function handleClose(e) {
+                let currentModal = e.target.closest(".modal");
+                if (!currentModal) currentModal = document.querySelector(".modal.open");
+                currentModal.classList.add("hide");
+                setTimeout((() => {
+                    document.body.classList.remove("body-hidden");
+                    currentModal.classList.remove("open");
+                    currentModal.classList.remove("hide");
+                }), 500);
+                return document.removeEventListener("click", handleClose);
+            }
+        }
+    }
     isWebp();
     mediaAdaptive();
     dropdown();
@@ -3617,4 +3659,5 @@
     maps();
     smoothScroll();
     tab();
+    modal();
 })();
