@@ -3517,11 +3517,20 @@
             new core(resultsSlider, {
                 speed: 700,
                 simulateTouch: false,
-                spaceBetween: 15,
+                spaceBetween: 6,
                 initialSlide: 2,
                 navigation: {
                     prevEl: " .results__slider-btn--prev",
                     nextEl: " .results__slider-btn--next"
+                },
+                centeredSlides: true,
+                breakpoints: {
+                    1100: {
+                        spaceBetween: 16
+                    },
+                    577: {
+                        centeredSlides: false
+                    }
                 }
             });
         }
